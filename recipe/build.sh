@@ -6,14 +6,8 @@ mkdir -p ${PREFIX}/bin ${BUILD_PREFIX}/bin/
 
 # `make config` checks against a static list of supported compilers
 # make `x86_64-conda-linux-gnu-gfortran` available as `gfortran`
-
-if [[ "${target_platform}" == "osx-arm64" ]]; then
-    ln -s ${FC_FOR_BUILD} ${BUILD_PREFIX}/bin/gfortran
-    ln -s ${CC_FOR_BUILD} ${BUILD_PREFIX}/bin/gcc
-else
-    ln -s ${FC} ${BUILD_PREFIX}/bin/gfortran
-    ln -s ${CC} ${BUILD_PREFIX}/bin/gcc
-fi
+ln -s ${FC} ${BUILD_PREFIX}/bin/gfortran
+ln -s ${CC} ${BUILD_PREFIX}/bin/gcc
 
 FC=gfortran NETCDFROOT=${PREFIX} make config
 
